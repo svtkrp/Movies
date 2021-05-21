@@ -59,7 +59,6 @@ public class Main {
         movie.setPosition(Integer.parseInt(pane.select(Query.POSITION.get()).get(i).text()));
         movie.setValue(getValue(pane.select(Query.VALUE.get()).get(i)));
         movie.setCount(getCount(pane.select(Query.COUNT.get()).get(i)));
-        System.out.println(movie);
         return movie;
     }
 

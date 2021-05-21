@@ -15,6 +15,19 @@
 	<description>Movies</description>
 	<properties>
 		<java.version>1.8</java.version>
+
+		<hibernate.cache.region.factory_class>
+			org.hibernate.cache.jcache.JCacheRegionFactory
+		</hibernate.cache.region.factory_class>
+		<hibernate.javax.cache.provider>
+			org.ehcache.jsr107.EhcacheCachingProvider
+		</hibernate.javax.cache.provider>
+		<hibernate.cache.use_second_level_cache>true</hibernate.cache.use_second_level_cache>
+		<ehcache>
+			<cache name="com.sve.movies.entity.Movie" maxElementsInMemory="10" />
+			<cache name="com.sve.movies.entity.MovieRate" maxElementsInMemory="100" />
+		</ehcache>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -24,6 +37,24 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.31.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jcache</artifactId>
+			<version>5.4.31.Final</version>
 		</dependency>
 
 		<dependency>

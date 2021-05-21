@@ -1,5 +1,9 @@
 package com.sve.movies.entity;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.Cacheable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +12,8 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Cacheable("cache")
 public class MovieRate {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
