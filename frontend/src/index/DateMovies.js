@@ -28,12 +28,8 @@ class DateMovies extends React.Component {
   
   doRequest() {
     const api = axios.create({
-      baseURL: `http://localhost:1563/`,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin':'*',
-      }
+      baseURL: `http://sve.my.to:1563/`,
+      headers: { }
     });
     
     api.get(`movies?date=${getDateStr(this.state.selectedDate)}`)
