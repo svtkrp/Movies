@@ -24,13 +24,13 @@ export default function MoviesItem(props) {
       <Paper className={classes.paper} elevation={3}>
         <Grid container spacing={2}>
           
-          <Grid item xs={1}>
+          <Grid item xs={2}>
             <Typography gutterBottom variant="h5">
                   {props.m.position}
             </Typography>
           </Grid>
             
-            <Grid item xs={9} container direction="column" spacing={2}>
+            <Grid item xs={8} container direction="column" spacing={2}>
               
               <Grid item>
                 <Typography gutterBottom variant="h5" color="primary">
