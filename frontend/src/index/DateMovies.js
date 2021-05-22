@@ -2,31 +2,24 @@ import React from 'react';
 import axios from 'axios';
 
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
 import Movies from './Movies.js';
 import MoviesDateTimePicker from '../elems/MoviesDateTimePicker.js';
 import MoviesButton from '../elems/MoviesButton.js';
+import getDateStr from './getDateStr.js';
    
 class DateMovies extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedDate: new Date(),
-      movies: []
+      movies: [],
+      isEmpty: true
     };
     this.handleDateChange = this.handleDateChange.bind(this);
-  }
-  
-  // yyyy-MM-dd'T'HH:mm:ss, zone - GMT
-  getDateStr(date) {
-    return "" + date.getUTCFullYear() + "-" + this.get2NumbersStr(date.getUTCMonth() + 1) + "-" + this.get2NumbersStr(date.getUTCDate())
-      + "T" + this.get2NumbersStr(date.getUTCHours()) + ":" + this.get2NumbersStr(date.getUTCMinutes()) + ":" + this.get2NumbersStr(date.getUTCSeconds());
-  }
-  
-  get2NumbersStr(num) {
-    return ((num < 10) ? "0" : "") + num;
   }
   
   componentDidMount() {
@@ -34,11 +27,20 @@ class DateMovies extends React.Component {
   }
   
   doRequest() {
-    axios.get(`http://localhost:1563/movies?date=${this.getDateStr(this.state.selectedDate)}`)
+    const api = axios.create({
+      baseURL: `http://localhost:1563/`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
+      }
+    });
+    
+    api.get(`movies?date=${getDateStr(this.state.selectedDate)}`)
       .then(res => {
-      console.log(res);
         const moviesRes = res.data;
-        this.setState({ movies: moviesRes });
+        const isEmptyRes = (moviesRes.length === 0);
+        this.setState({ movies: moviesRes, isEmpty: isEmptyRes });
       });
   }
 
@@ -59,6 +61,11 @@ class DateMovies extends React.Component {
       </Grid>
       
       <Movies items={this.state.movies} />
+      
+      <Typography variant="h6" gutterBottom align='center' style={this.state.isEmpty ? {display: 'block', marginTop: "30px"} : {display: 'none', marginTop: "30px"}}>
+        Статистика на эту дату и даты ранее не была сохранена. Выберите более позднюю дату.
+      </Typography>
+    
     </MuiPickersUtilsProvider>
   );
   }
