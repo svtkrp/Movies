@@ -1,7 +1,0 @@
-com/sve/movies/constants/Query.class
-com/sve/movies/constants/ParseConstants.class
-com/sve/movies/Main.class
-com/sve/movies/dto/MovieDTO.class
-com/sve/movies/controller/AddMoviesController.class
-com/sve/movies/controller/MovieApi.class
-com/sve/movies/constants/PostConstants.class
