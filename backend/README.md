@@ -2,7 +2,7 @@
 Java, Spring Boot, Hibernate, H2, Ehcache, Tomcat
 
 ## Как попробовать онлайн:
-Зайти на [сайт](https://sve.my.to/movies).
+Зайти на [сайт](http://sve.my.to/movies).
 
 ## Как попробовать локально:
 1) Скачать данный репозиторий:

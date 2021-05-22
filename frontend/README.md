@@ -2,7 +2,7 @@
 JavaScript, React, Material-UI, Axios, Webpack, Babel
 
 ## Как попробовать онлайн:
-Зайти на [сайт](https://sve.my.to/movies).
+Зайти на [сайт](http://sve.my.to/movies).
 
 ## Как попробовать локально:
 1) Скачать данный репозиторий:
